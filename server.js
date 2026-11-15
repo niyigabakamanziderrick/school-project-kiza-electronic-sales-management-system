@@ -2,6 +2,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import db from './Config/db.js';
+import userRoutes from "./Routes/userRoutes.js";
 
 // Load environment variables
 
@@ -33,6 +34,14 @@ try {
 
     process.exit(1);
 }
+
+// Middleware
+
+app.use(express.json());
+
+// Connect user routes
+
+app.use("/api/users", userRoutes);
 
 // Server port
 
