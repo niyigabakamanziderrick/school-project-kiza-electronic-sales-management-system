@@ -1,7 +1,12 @@
 
 import express from 'express';
+
 import dotenv from 'dotenv';
+
 import db from './Config/db.js';
+
+import session from 'express-session'
+
 import userRoutes from "./Routes/userRoutes.js";
 
 // Load environment variables
@@ -38,6 +43,15 @@ try {
 // Middleware
 
 app.use(express.json());
+
+
+// Session configuration
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
 
 // Connect user routes
 
