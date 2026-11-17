@@ -9,6 +9,10 @@ import session from 'express-session'
 
 import userRoutes from "./Routes/userRoutes.js";
 
+import productRoutes from "./Routes/productRoutes.js";
+
+import saleRoutes from "./Routes/saleRoutes.js";
+
 // Load environment variables
 
 dotenv.config();
@@ -53,9 +57,20 @@ app.use(session({
     saveUninitialized: false
 }));
 
+
 // Connect user routes
 
 app.use("/api/users", userRoutes);
+
+
+// Connect product routes
+
+app.use("/api/products", productRoutes);
+
+// Connect sale routes
+
+app.use("/api/sales", saleRoutes);
+
 
 // Server port
 
